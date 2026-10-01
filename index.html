@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chợ Sinh Viên - Giao dịch & Tìm trọ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">🛒 Chợ Sinh Viên</div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Tìm đồ dùng, giáo trình, phòng trọ...">
+            <button onclick="app.search()">Tìm</button>
+        </div>
+        <div class="user-actions">
+            <button class="cart-btn" onclick="app.toggleCart()">Giỏ hàng (<span id="cart-count">0</span>)</button>
+            <button class="login-btn">Đăng nhập</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="toolbar">
+            <h2>Sản phẩm mới nhất</h2>
+            <select id="sortOption" onchange="app.sortProducts()">
+                <option value="default">Sắp xếp mặc định</option>
+                <option value="priceAsc">Giá: Thấp đến Cao</option>
+                <option value="priceDesc">Giá: Cao đến Thấp</option>
+            </select>
+        </div>
+
+        <div class="product-grid" id="product-container">
+            <!-- JS sẽ render sản phẩm vào đây -->
+        </div>
+    </main>
+
+    <!-- Modal Giỏ hàng -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <h2>Giỏ hàng của bạn</h2>
+            <div id="cart-items"></div>
+            <div class="cart-footer">
+                <h3>Tổng: <span id="cart-total">0</span>đ</h3>
+                <button class="close-btn" onclick="app.toggleCart()">Đóng</button>
+                <button class="checkout-btn" onclick="app.checkout()">Thanh toán</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thứ tự nhúng script rất quan trọng: Core -> DSA -> Logic -->
+    <script src="models.js"></script>
+    <script src="dsa.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
